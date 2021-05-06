@@ -1,22 +1,20 @@
 <template>
   <Container>
-    <template #container>
-      <div>
-        <SectionBreadcrumbs />
+    <div :class="$style['content']">
+      <SectionBreadcrumbs />
 
-        <div :class="$style['content']">
-          <div :class="$style['side-menu']">
-            <SectionMenu />
-          </div>
+      <div :class="$style['main']">
+        <div :class="$style['side-menu']">
+          <SectionMenu />
+        </div>
 
-          <div :class="$style['products']">
-            <ProductTitle />
-            <ProductFiltre />
-            <ProductList />
-          </div>
+        <div :class="$style['products']">
+          <ProductTitle />
+          <ProductFilter />
+          <ProductList />
         </div>
       </div>
-    </template>
+    </div>
   </Container>
 </template>
 
@@ -25,7 +23,7 @@ import Container from '~/components/core/Container.vue';
 import SectionBreadcrumbs from '~/components/shop/sections/SectionBreadcrumbs.vue';
 import SectionMenu from '~/components/shop/sections/SectionMenu.vue';
 import ProductTitle from '~/components/shop/products/ProductTitle.vue';
-import ProductFiltre from '~/components/shop/products/ProductFiltre.vue';
+import ProductFilter from '~/components/shop/products/ProductFilter.vue';
 import ProductList from '~/components/shop/products/ProductList.vue';
 
 export default {
@@ -34,7 +32,7 @@ export default {
     SectionBreadcrumbs,
     SectionMenu,
     ProductTitle,
-    ProductFiltre,
+    ProductFilter,
     ProductList
   }
 };
@@ -42,6 +40,12 @@ export default {
 
 <style module lang="scss">
 .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main {
   display: flex;
   padding: 32px 0 0 0;
 }

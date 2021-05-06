@@ -1,31 +1,37 @@
 <template>
   <header :class="$style['header']">
     <Container>
-      <template #container>
-        <div :class="$style['header-content']">
-          <nuxt-link to="/" :class="$style['brand']">Project.com</nuxt-link>
+      <div :class="$style['header-content']">
+        <nuxt-link to="/" :class="$style['brand']">Project.com</nuxt-link>
 
-          <button :class="$style['catalog']">Каталог</button>
-
-          <nuxt-link to="/wishlist" :class="$style['wishlist']">
-            <img src="~/assets/svg/shop/wishlist/heart-icon.svg" />
-          </nuxt-link>
-
-          <nuxt-link to="/cart" :class="$style['cart']">
-            <img src="~/assets/svg/shop/cart/cart-icon.svg" />
-          </nuxt-link>
+        <div :class="$style['catalog']">
+          <Button :onClick="showSections">Каталог</Button>
         </div>
-      </template>
+
+        <WishlistBtn />
+
+        <CartBtn />
+      </div>
     </Container>
   </header>
 </template>
 
 <script>
 import Container from '~/components/core/Container.vue';
+import Button from '~/components/core/Button.vue';
+import WishlistBtn from '~/components/shop/wishlist/WishlistBtn.vue';
+import CartBtn from '~/components/shop/cart/CartBtn.vue';
 
 export default {
   components: {
-    Container
+    Container,
+    Button,
+    WishlistBtn,
+    CartBtn
+  },
+
+  methods: {
+    showSections() {}
   }
 };
 </script>
@@ -47,16 +53,14 @@ export default {
 .brand {
   font-weight: 700;
   font-size: 28px;
+  color: #000;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .catalog {
   margin: 0 auto 0 34px;
-}
-
-.wishlist {
-  margin: 0 33px 0 0;
-}
-
-.cart {
 }
 </style>

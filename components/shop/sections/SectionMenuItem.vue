@@ -74,7 +74,14 @@ export default {
      * @return  void
      */
     selectSection() {
+      this.$router
+        .replace({
+          query: { ...this.$route.query, section: this.item.id }
+        })
+        .catch(() => {});
+
       this.$store.dispatch('shop/sections/selectSection', this.item.id);
+      this.$store.dispatch('shop/products/sortBySectionId', this.item.id);
     }
   }
 };
