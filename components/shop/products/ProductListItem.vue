@@ -161,12 +161,32 @@ export default {
 </script>
 
 <style module lang="scss">
+@import '~/assets/scss/variables.scss';
+
+* {
+  &:nth-child(1),
+  &:nth-child(2) {
+    & > .content {
+      border-width: 1px 1px 1px 0px;
+
+      @media (min-width: $grid-breakpoints-lg) {
+        border-width: 1px;
+      }
+    }
+  }
+}
+
 .content {
   position: relative;
   padding: 16px 16px 22px;
   border: 1px solid #e7e7e7;
-  border-radius: 4px;
+  border-width: 0px 1px 1px 0px;
   overflow: hidden;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    border-width: 1px;
+    border-radius: 4px;
+  }
 }
 
 .image-wrap {

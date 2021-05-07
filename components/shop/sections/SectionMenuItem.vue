@@ -74,6 +74,8 @@ export default {
      * @return  void
      */
     selectSection() {
+      this.$root.$emit('hide-section-modal');
+
       this.$router
         .replace({
           query: { ...this.$route.query, section: this.item.id }

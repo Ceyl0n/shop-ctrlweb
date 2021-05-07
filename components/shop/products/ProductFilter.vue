@@ -1,54 +1,39 @@
 <template>
-  <div :class="$style['filter']">
+  <div :class="$style['filter-wrap']">
+    <div :class="$style['sections']">
+      <ProductFilterSections />
+    </div>
     <div>
-      <select v-model="selectedFilter">
-        <option
-          v-for="(i, index) in filterOptions"
-          :key="index"
-          :value="i.value"
-          >{{ i.text }}</option
-        >
-      </select>
+      <ProductFilterSelect />
     </div>
   </div>
 </template>
 
 <script>
+import ProductFilterSelect from '~/components/shop/products/ProductFilterSelect.vue';
+import ProductFilterSections from '~/components/shop/products/ProductFilterSections.vue';
+
 export default {
-  computed: {
-    /**
-     * Выбранный фильтр
-     * @return  String
-     */
-    selectedFilter: {
-      get() {
-        return this.$store.state.shop.products.selectedFilter;
-      },
-
-      set(value) {
-        this.$router
-          .replace({
-            query: { ...this.$route.query, sort: value }
-          })
-          .catch(() => {});
-
-        this.$store.dispatch('shop/products/setFilter', value);
-      }
-    },
-
-    /**
-     * Cписок фильтров
-     * @return  Array
-     */
-    filterOptions() {
-      return this.$store.state.shop.products.filterOptions;
-    }
+  components: {
+    ProductFilterSelect,
+    ProductFilterSections
   }
 };
 </script>
 
 <style module lang="scss">
-.filter {
+@import '~/assets/scss/variables.scss';
+
+.filter-wrap {
+  display: flex;
   padding: 0 0 24px 0;
+}
+
+.sections {
+  display: block;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    display: none;
+  }
 }
 </style>

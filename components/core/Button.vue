@@ -37,7 +37,7 @@ export default {
   user-select: none;
   background-color: transparent;
   color: #000;
-  border: none;
+  border: 1px solid transparent;
   padding: 2px 6px;
   font-size: 12px;
   line-height: 16px;
@@ -48,11 +48,18 @@ export default {
 
 .black {
   background-color: #000;
+  border-color: #000;
   color: #fff;
+}
+
+.lenght {
+  border-color: #000;
+  color: #000;
 }
 
 .green {
   background-color: #26b04d;
+  border-color: #26b04d;
   color: #fff;
 }
 

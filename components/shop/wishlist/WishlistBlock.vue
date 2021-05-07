@@ -37,12 +37,17 @@ export default {
 </script>
 
 <style module lang="scss">
+@import '~/assets/scss/variables.scss';
+
 .wishlist {
   position: relative;
   display: flex;
   height: 100%;
   min-width: 46px;
-  margin: 0 25px 0 0;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    margin: 0 25px 0 0;
+  }
 }
 
 .icon {

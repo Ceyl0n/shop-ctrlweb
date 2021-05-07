@@ -34,14 +34,16 @@ export const getters = {
   sectionBreadcrumbs(state, getters) {
     const breadcrumbs = [];
     const selected = getters['selectedSection'];
-    breadcrumbs.push({ id: selected.id, name: selected.name });
+    if (Object.keys(selected).length) {
+      breadcrumbs.push({ id: selected.id, name: selected.name });
 
-    if (selected.parent) {
-      let id = selected.parent;
-      while (id) {
-        const i = getters['selectedByParentId'](id);
-        breadcrumbs.unshift({ id: i.id, name: i.name });
-        id = i.parent ? i.parent : 0;
+      if (selected.parent) {
+        let id = selected.parent;
+        while (id) {
+          const i = getters['selectedByParentId'](id);
+          breadcrumbs.unshift({ id: i.id, name: i.name });
+          id = i.parent ? i.parent : 0;
+        }
       }
     }
 
@@ -60,8 +62,13 @@ export const mutations = {
 
   SELECT_SECTION(state, id) {
     const searchItem = i => {
-      if (i.id === id) i.selected = true;
-      else i.selected = false;
+      if (i.id === id) {
+        i.selected = true;
+        if (i.parent)
+          state.sections.forEach(j => {
+            if (j.id === i.parent) j.opened = true;
+          });
+      } else i.selected = false;
       if (i.childs && i.childs.length) i.childs.forEach(j => searchItem(j));
     };
 

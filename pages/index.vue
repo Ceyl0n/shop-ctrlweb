@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style module lang="scss">
+@import '~/assets/scss/variables.scss';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -53,6 +55,11 @@ export default {
 .side-menu {
   flex: 0 0 200px;
   max-width: 200px;
+  display: none;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    display: block;
+  }
 }
 
 .products {
@@ -60,6 +67,9 @@ export default {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 0 0 32px;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    padding: 0 0 0 32px;
+  }
 }
 </style>

@@ -17,11 +17,16 @@ export const actions = {
       if (app.route.query.sort)
         context.dispatch('shop/products/setFilter', app.route.query.sort);
 
-      if (app.route.query.section)
+      if (app.route.query.section) {
         context.dispatch(
           'shop/sections/selectSection',
           Number(app.route.query.section)
         );
+        context.dispatch(
+          'shop/products/sortBySectionId',
+          Number(app.route.query.section)
+        );
+      }
     }
   }
 };

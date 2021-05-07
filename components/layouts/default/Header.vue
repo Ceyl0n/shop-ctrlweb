@@ -8,9 +8,9 @@
           <SectionDropdownMenu />
         </div>
 
-        <WishlistBtn />
+        <WishlistBlock />
 
-        <CartBtn />
+        <CartBlock />
       </div>
     </Container>
   </header>
@@ -19,22 +19,24 @@
 <script>
 import Container from '~/components/core/Container.vue';
 import Button from '~/components/core/Button.vue';
-import WishlistBtn from '~/components/shop/wishlist/WishlistBtn.vue';
-import CartBtn from '~/components/shop/cart/CartBtn.vue';
+import WishlistBlock from '~/components/shop/wishlist/WishlistBlock.vue';
+import CartBlock from '~/components/shop/cart/CartBlock.vue';
 import SectionDropdownMenu from '~/components/shop/sections/SectionDropdownMenu.vue';
 
 export default {
   components: {
     Container,
     Button,
-    WishlistBtn,
-    CartBtn,
+    WishlistBlock,
+    CartBlock,
     SectionDropdownMenu
   }
 };
 </script>
 
 <style module lang="scss">
+@import '~/assets/scss/variables.scss';
+
 .header {
   display: flex;
   height: 56px;
@@ -59,6 +61,10 @@ export default {
 }
 
 .catalog {
-  margin: 0 auto 0 34px;
+  margin: 0 auto 0 20px;
+
+  @media (min-width: $grid-breakpoints-lg) {
+    margin-left: 34px;
+  }
 }
 </style>
