@@ -122,6 +122,7 @@ export default {
 .icon-toggle-category {
   transform: rotate(0);
   transition: transform 0.2s ease;
+  user-select: none;
   cursor: pointer;
 }
 

@@ -5,7 +5,7 @@
 
       <div :class="$style['main']">
         <div :class="$style['side-menu']">
-          <SectionMenu />
+          <SectionSideMenu />
         </div>
 
         <div :class="$style['products']">
@@ -21,7 +21,7 @@
 <script>
 import Container from '~/components/core/Container.vue';
 import SectionBreadcrumbs from '~/components/shop/sections/SectionBreadcrumbs.vue';
-import SectionMenu from '~/components/shop/sections/SectionMenu.vue';
+import SectionSideMenu from '~/components/shop/sections/SectionSideMenu.vue';
 import ProductTitle from '~/components/shop/products/ProductTitle.vue';
 import ProductFilter from '~/components/shop/products/ProductFilter.vue';
 import ProductList from '~/components/shop/products/ProductList.vue';
@@ -30,7 +30,7 @@ export default {
   components: {
     Container,
     SectionBreadcrumbs,
-    SectionMenu,
+    SectionSideMenu,
     ProductTitle,
     ProductFilter,
     ProductList

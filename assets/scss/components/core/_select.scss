@@ -1,0 +1,31 @@
+select {
+  display: inline-block;
+  padding: 7px 28px 7px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000;
+  vertical-align: middle;
+  background: #fff url("data:image/svg+xml,%3Csvg width='10' height='6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0H0l5 6 5-6z' fill='%23000'/%3E%3C/svg%3E%0A") no-repeat right 10px center/10px 6px;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  appearance: none;
+
+  &:focus {
+    border-color: #80bdff;
+    outline: 0;
+
+    &::-ms-value {
+      color: #495057;
+      background-color: #fff;
+    }
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #495057;
+  }
+}

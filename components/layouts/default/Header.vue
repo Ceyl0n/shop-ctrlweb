@@ -5,7 +5,7 @@
         <nuxt-link to="/" :class="$style['brand']">Project.com</nuxt-link>
 
         <div :class="$style['catalog']">
-          <Button :onClick="showSections">Каталог</Button>
+          <SectionDropdownMenu />
         </div>
 
         <WishlistBtn />
@@ -21,17 +21,15 @@ import Container from '~/components/core/Container.vue';
 import Button from '~/components/core/Button.vue';
 import WishlistBtn from '~/components/shop/wishlist/WishlistBtn.vue';
 import CartBtn from '~/components/shop/cart/CartBtn.vue';
+import SectionDropdownMenu from '~/components/shop/sections/SectionDropdownMenu.vue';
 
 export default {
   components: {
     Container,
     Button,
     WishlistBtn,
-    CartBtn
-  },
-
-  methods: {
-    showSections() {}
+    CartBtn,
+    SectionDropdownMenu
   }
 };
 </script>

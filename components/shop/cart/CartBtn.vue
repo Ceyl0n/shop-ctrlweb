@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link to="/cart" :class="$style['cart']">
+  <div :class="$style['cart']">
     <template v-if="cartProductsQuantity">
       <img
         :class="$style['icon']"
@@ -12,7 +12,7 @@
     </template>
 
     <div :class="$style['amount']">{{ amountCart }} <Currency /></div>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>

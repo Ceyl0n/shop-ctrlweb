@@ -33,7 +33,7 @@
       <template v-if="productInCart">
         <Button variant="green" :onClick="removeFromCart">
           <img src="~/assets/svg/shop/products/product-in-cart.svg" />
-          <span>В корзину</span>
+          <span :class="$style['btn-text']">В корзину</span>
         </Button>
       </template>
       <template v-else>
@@ -54,9 +54,12 @@
       </template>
     </div>
 
-    <hr />
-    <div>discount: {{ item.discount }}</div>
-    <div>on_sale: {{ item.on_sale }}</div>
+    <div :class="$style['badge-wrap']">
+      <span v-if="item.discount" :class="$style['badge']"
+        >-{{ item.discount }}%</span
+      >
+      <span v-if="item.on_sale" :class="$style['badge']">Sale</span>
+    </div>
   </div>
 </template>
 
@@ -159,9 +162,11 @@ export default {
 
 <style module lang="scss">
 .content {
+  position: relative;
   padding: 16px 16px 22px;
   border: 1px solid #e7e7e7;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .image-wrap {
@@ -244,5 +249,31 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 16px 0 0 0;
+}
+
+.btn-text {
+  margin: 0 0 0 6px;
+}
+
+.badge-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.badge {
+  min-width: 65px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  padding: 8px;
+  margin: 0 0 0 5px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border-radius: 0px 0px 0px 20px;
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
   <div :class="$style['filter']">
-    <select v-model="selectedFilter">
-      <option
-        v-for="(i, index) in filterOptions"
-        :key="index"
-        :value="i.value"
-        >{{ i.text }}</option
-      >
-    </select>
+    <div>
+      <select v-model="selectedFilter">
+        <option
+          v-for="(i, index) in filterOptions"
+          :key="index"
+          :value="i.value"
+          >{{ i.text }}</option
+        >
+      </select>
+    </div>
   </div>
 </template>
 

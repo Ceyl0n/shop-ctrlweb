@@ -1,5 +1,8 @@
 <template>
-  <button @click="onClick" :class="[$style['button'], $style[variant]]">
+  <button
+    @click="onClick"
+    :class="[$style['button'], $style[variant], $style[size]]"
+  >
     <slot></slot>
   </button>
 </template>
@@ -14,6 +17,11 @@ export default {
 
     variant: {
       type: String,
+      default: 'black'
+    },
+
+    size: {
+      type: String,
       default: ''
     }
   }
@@ -22,12 +30,13 @@ export default {
 
 <style module lang="scss">
 .button {
-  display: inline-block;
-  text-align: center;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
   vertical-align: middle;
   user-select: none;
-  background-color: #000;
-  color: #fff;
+  background-color: transparent;
+  color: #000;
   border: none;
   padding: 2px 6px;
   font-size: 12px;
@@ -37,12 +46,23 @@ export default {
   cursor: pointer;
 }
 
+.black {
+  background-color: #000;
+  color: #fff;
+}
+
 .green {
   background-color: #26b04d;
+  color: #fff;
 }
 
 .transparent {
   background-color: transparent;
   color: #000;
+}
+
+.large {
+  font-size: 14px;
+  padding: 8px 10px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link to="/wishlist" :class="$style['wishlist']">
+  <div :class="$style['wishlist']">
     <template v-if="favoriteProductsQuantity">
       <img
         :class="$style['icon']"
@@ -13,7 +13,7 @@
         src="~/assets/svg/shop/wishlist/heart-icon.svg"
       />
     </template>
-  </nuxt-link>
+  </div>
 </template>
 
 <script>
