@@ -2,7 +2,7 @@
   <header :class="$style['header']">
     <Container>
       <div :class="$style['header-content']">
-        <nuxt-link to="/" :class="$style['brand']">Project.com</nuxt-link>
+        <div :class="$style['brand']">Project.com</div>
 
         <div :class="$style['catalog']">
           <SectionDropdownMenu />
@@ -53,11 +53,6 @@ export default {
 .brand {
   font-weight: 700;
   font-size: 28px;
-  color: #000;
-
-  &:hover {
-    color: inherit;
-  }
 }
 
 .catalog {

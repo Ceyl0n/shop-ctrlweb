@@ -1,7 +1,7 @@
 <template>
   <div :class="$style['list']">
     <div
-      v-for="(item, index) in sortedProducts"
+      v-for="(item, index) in sortedProducts.items"
       :key="index"
       :class="$style['item']"
     >

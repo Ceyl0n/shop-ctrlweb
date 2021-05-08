@@ -78,7 +78,7 @@ export default {
 
       this.$router
         .replace({
-          query: { ...this.$route.query, section: this.item.id }
+          query: { ...this.$route.query, section: this.item.id, page: 1 }
         })
         .catch(() => {});
 

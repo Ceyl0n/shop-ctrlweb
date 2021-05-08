@@ -9,42 +9,62 @@ export const state = () => ({
     { text: 'По убыванию цены', value: 'price__desc' },
     { text: 'По имени (А -> Я)', value: 'name__asc' },
     { text: 'По имени (Я -> А)', value: 'name__desc' }
-  ]
+  ],
+
+  perPage: 10,
+  currentPage: 1
 });
 
 export const getters = {
   sortedProducts(state) {
     const products = state.sortedProducts.map(i => ({ ...i }));
 
+    const paginated = arr => {
+      const start = (state.currentPage - 1) * state.perPage;
+      const end = state.currentPage * state.perPage;
+      return {
+        total: arr.length,
+        items: arr.slice(start, end)
+      };
+    };
+
     if (state.selectedFilter === 'price__asc')
-      return products.sort(function(a, b) {
-        if (a.price < b.price) return -1;
-        if (a.price > b.price) return 1;
-        return 0;
-      });
+      return paginated(
+        products.sort(function(a, b) {
+          if (a.price < b.price) return -1;
+          if (a.price > b.price) return 1;
+          return 0;
+        })
+      );
 
     if (state.selectedFilter === 'price__desc')
-      return products.sort(function(a, b) {
-        if (a.price > b.price) return -1;
-        if (a.price < b.price) return 1;
-        return 0;
-      });
+      return paginated(
+        products.sort(function(a, b) {
+          if (a.price > b.price) return -1;
+          if (a.price < b.price) return 1;
+          return 0;
+        })
+      );
 
     if (state.selectedFilter === 'name__asc')
-      return products.sort(function(a, b) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
-      });
+      return paginated(
+        products.sort(function(a, b) {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        })
+      );
 
     if (state.selectedFilter === 'name__desc')
-      return products.sort(function(a, b) {
-        if (a.name > b.name) return -1;
-        if (a.name < b.name) return 1;
-        return 0;
-      });
+      return paginated(
+        products.sort(function(a, b) {
+          if (a.name > b.name) return -1;
+          if (a.name < b.name) return 1;
+          return 0;
+        })
+      );
 
-    return products;
+    return paginated(products);
   },
 
   favoriteProductsQuantity(state) {
@@ -62,10 +82,16 @@ export const mutations = {
     state.sortedProducts = state.products.filter(
       i => i.section === id || i.parent_section === id
     );
+
+    state.currentPage = 1;
   },
 
   SET_FILTER(state, filter) {
     state.selectedFilter = filter;
+  },
+
+  SET_PAGE(state, page) {
+    state.currentPage = page;
   },
 
   ADD_TO_WISHLIST(state, id) {
@@ -127,5 +153,14 @@ export const actions = {
    */
   removeFromWishlist({ commit }, id) {
     commit('REMOVE_FROM_WISHLIST', id);
+  },
+
+  /**
+   * Установить страницу пагинации
+   * @param   Number  page
+   * @return  void
+   */
+  setPage({ commit }, page) {
+    commit('SET_PAGE', page);
   }
 };

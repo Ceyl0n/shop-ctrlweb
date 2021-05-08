@@ -1,7 +1,12 @@
 <template>
   <button
     @click="onClick"
-    :class="[$style['button'], $style[variant], $style[size]]"
+    :class="[
+      $style['button'],
+      $style[variant],
+      $style[size],
+      $style[isActive ? 'active' : '']
+    ]"
   >
     <slot></slot>
   </button>
@@ -23,6 +28,11 @@ export default {
     size: {
       type: String,
       default: ''
+    },
+
+    isActive: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -71,5 +81,11 @@ export default {
 .large {
   font-size: 14px;
   padding: 8px 10px;
+}
+
+.active {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
 }
 </style>

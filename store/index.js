@@ -14,6 +14,9 @@ export const actions = {
     } catch (e) {}
 
     if (app.route.query) {
+      if (app.route.query.page)
+        context.dispatch('shop/products/setPage', app.route.query.page);
+
       if (app.route.query.sort)
         context.dispatch('shop/products/setFilter', app.route.query.sort);
 

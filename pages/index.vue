@@ -14,6 +14,8 @@
           <ProductList />
         </div>
       </div>
+
+      <ProductPagination />
     </div>
   </Container>
 </template>
@@ -25,6 +27,7 @@ import SectionSideMenu from '~/components/shop/sections/SectionSideMenu.vue';
 import ProductTitle from '~/components/shop/products/ProductTitle.vue';
 import ProductFilter from '~/components/shop/products/ProductFilter.vue';
 import ProductList from '~/components/shop/products/ProductList.vue';
+import ProductPagination from '~/components/shop/products/ProductPagination.vue';
 
 export default {
   components: {
@@ -33,7 +36,8 @@ export default {
     SectionSideMenu,
     ProductTitle,
     ProductFilter,
-    ProductList
+    ProductList,
+    ProductPagination
   }
 };
 </script>
