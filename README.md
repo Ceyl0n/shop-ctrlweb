@@ -1,5 +1,19 @@
 # shop-ctrlweb
 
+Приложение запускается на 3003 порту
+
+## Запуск приложения для разработки
+
+```bash
+$ npm install; npm run dev
+```
+
+## Запуск приложения для продакшена
+
+```bash
+$ npm install; npm run build; npm run start
+```
+
 ## Build Setup
 
 ```bash
